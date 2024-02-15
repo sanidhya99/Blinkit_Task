@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Account</title>
+
+    <style>
+      /* Global Styles */
+      body {
+        background-color: #121212;
+        color: #ffffff;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      a {
+        color: #ffffff;
+        text-decoration: none;
+      }
+
+      /* Header Styles */
+      #header {
+        background-color: #333333;
+        padding: 10px;
+        text-align: center;
+      }
+
+      #header a {
+        margin: 0 10px;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+
+      /* Heading Styles */
+      #heading {
+        text-align: center;
+        padding: 20px;
+      }
+
+      #heading h1 {
+        color: #ffffff;
+        margin: 10px 0;
+      }
+
+      #primg {
+        max-width: 200px;
+        height: auto;
+        border-radius: 50%;
+        margin-top: 10px;
+        display: block;
+        margin: 0 auto;
+      }
+
+      /* About Section Styles */
+      #about {
+        background-color: #222222;
+        padding: 20px;
+        border-radius: 5px;
+        margin-top: 20px;
+        text-align: center;
+      }
+
+      #about p {
+        margin: 0;
+        color: #ffffff;
+      }
+
+      .add {
+        display: inline-block;
+        margin-top: 10px;
+      }
+
+      .submit {
+        background-color: #333333;
+        color: #ffffff;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 5px;
+        text-transform: uppercase;
+      }
+
+      .submit:hover {
+        background-color: #555555;
+      }
+
+      /* Content Styles */
+      #cont {
+        padding: 20px;
+        text-align: center;
+      }
+
+      .post {
+        background-color: #333333;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        text-align: center;
+      }
+
+      .post_img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 5px;
+      }
+
+      .caption {
+        margin-top: 10px;
+        color: #ffffff;
+      }
+
+      #comments {
+        display: block;
+        margin-top: 10px;
+        color: #3498db;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="heading"><h1>{{person.name}}</h1></div>
+    <div id="header">
+      <a href="/visit/input">input</a>
+    </div>
+    <div id="cont">
+      {% for ps in feeds %}
+      <div class="post">
+        <div class="img">
+          <img src="{{ps.photo.url}}" alt="">
+        </div>
+        <div class="caption"><p>{{ps.notes}}</p></div>
+      </div>
+
+      {% endfor %}
+    </div>
+  </body>
+</html>
