@@ -1,151 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Account</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Account</title>
 
-    <style>
-      /* Global Styles */
-      body {
-        background-color: #121212;
-        color: #ffffff;
-        font-family: Georgia, 'Times New Roman', Times, serif;
-        margin: 0;
-        padding: 0;
-      }
+  <style>
+    /* Global Styles */
+    body {
+      background-color: #121212;
+      color: #ffffff;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      margin: 0;
+      padding: 0;
+    }
 
-      a {
-        color: #ffffff;
-        text-decoration: none;
-      }
+    a {
+      color: #ffffff;
+      text-decoration: none;
+    }
 
-      /* Header Styles */
-      #header {
-        font-family: Georgia, 'Times New Roman', Times, serif;
-        background-color: #7a0505;
-        padding: 10px;
-        text-align: center;
-      }
+    /* Header Styles */
+    #header {
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      background-color: #7a0505;
+      padding: 10px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-      #header a {
-        font-family: Georgia, 'Times New Roman', Times, serif;
-        margin: 0 10px;
-        font-weight: bold;
-        text-transform: uppercase;
-      }
+    #header a {
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      margin: 0 10px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
 
-      /* Heading Styles */
-      #heading {
-        font-family: Georgia, 'Times New Roman', Times, serif;
-        text-align: center;
-        padding: 20px;
-      }
+    /* Heading Styles */
+    #heading {
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      text-align: center;
+      padding: 20px;
+    }
 
-      #heading h1 {
-        color: #ffffff;
-        margin: 10px 0;
-      }
+    #heading h1 {
+      color: #ffffff;
+      margin: 10px 0;
+    }
 
-      #primg {
-        max-width: 200px;
-        height: auto;
-        border-radius: 50%;
-        margin-top: 10px;
-        display: block;
-        margin: 0 auto;
-      }
+    #primg {
+      max-width: 200px;
+      height: auto;
+      border-radius: 50%;
+      margin-top: 10px;
+      display: block;
+      margin: 0 auto;
+    }
 
-      /* About Section Styles */
-      #about {
-        background-color: #222222;
-        padding: 20px;
-        border-radius: 5px;
-        margin-top: 20px;
-        text-align: center;
-      }
+    /* About Section Styles */
+    #about {
+      background-color: #222222;
+      padding: 20px;
+      border-radius: 5px;
+      margin-top: 20px;
+      text-align: center;
+    }
 
-      #about p {
-        margin: 0;
-        color: #ffffff;
-        font-size: large;
-      }
+    #about p {
+      margin: 0;
+      color: #ffffff;
+      font-size: large;
+    }
 
-      .add {
-        display: inline-block;
-        margin-top: 10px;
-      }
+    #logout {
+      justify-self: flex-end;
+    }
 
-      .submit {
-        background-color: #333333;
-        color: #ffffff;
-        border: none;
-        padding: 10px 20px;
-        cursor: pointer;
-        border-radius: 5px;
-        text-transform: uppercase;
-      }
+    .add {
+      display: inline-block;
+      margin-top: 10px;
+    }
 
-      .submit:hover {
-        background-color: #555555;
-      }
+    .submit {
+      background-color: #333333;
+      color: #ffffff;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 5px;
+      text-transform: uppercase;
+    }
 
-      /* Content Styles */
-      #cont {
-        padding: 20px;
-        text-align: center;
-      }
+    .submit:hover {
+      background-color: #555555;
+    }
 
-      .post {
-        background-color: #000000;
-        padding: 20px;
-        margin-bottom: 20px;
-        border-radius: 5px;
-        text-align: center;
-      }
+    /* Content Styles */
+    #cont {
+      padding: 20px;
+      text-align: center;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
 
-      .post_img {
-        max-width: 100%;
-        height: auto;
-        border-radius: 5px;
-      }
+    .post {
+      background-color: #000000;
+      padding: 20px;
+      border-radius: 5px;
+      text-align: center;
+      display: grid;
+      grid-template-rows: auto auto;
+    }
 
-      .caption {
-        font-family: Georgia, 'Times New Roman', Times, serif;
-        margin-top: 10px;
-        color: #ffffff;
-        font-size: 24px;
-        font-weight: 600;
-        display:flex;
-        flex-direction: row;
-        
+    .post .img {
+      display: flex;
+      justify-content: center;
+    }
 
-      }
+    .post_img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 1px 1px 0px #999, 2px 2px 0px #999, 3px 3px 0px #999;
+    }
 
-      #comments {
-        display: block;
-        margin-top: 10px;
-        color: #3498db;
-        text-decoration: none;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="heading"><h1> Welcome {{person.name}}</h1></div>
-    <div id="header">
-      <a href="/visit/input" style="font-size: 20px;">Dump Your Post Here   &#x2193</a>
-    </div>
-    <div id="cont">
-      {% for ps in feeds %}
-      <div class="post">
-        <div class="img">
-          <img src="{{ps.photo.url}}" alt="" style="border: solid 1px #686868; display: block; width: 400px; border-radius: 8px; box-shadow: 1px 1px 0px #999, 2px 2px 0px #999, 3px 3px 0px #999;">
-        </div>
-        <div class="caption"><p>{{ps.notes}}</p></div>
+    .caption {
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      margin-top: 10px;
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: 600;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #comments {
+      display: block;
+      margin-top: 10px;
+      color: #3498db;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="heading">
+    <h1>Welcome {{person.name}}</h1>
+  </div>
+  <div id="header">
+    <a href="/visit/input" style="font-size: 20px;">Dump Your Post Here   &#x2193</a>
+    <a href="/logout/" id="logout">Logout</a>
+  </div>
+  <div id="cont">
+    {% for ps in feeds %}
+    <div class="post">
+      <div class="img">
+        <img src="{{ps.photo.url}}" alt="" class="post_img">
       </div>
-
-      {% endfor %}
+      <div class="caption">
+        <p>{{ps.notes}}</p>
+      </div>
     </div>
-  </body>
+    {% endfor %}
+  </div>
+</body>
 </html>

@@ -18,9 +18,11 @@ from django.urls import path,include
 from register import views as v
 from django.conf import settings
 from django.conf.urls.static import static
+from django.views.generic import RedirectView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('register/',v.SignUpView.as_view(),name="register"),
     path('visit/',include("feed.urls")),
-    path('', include("django.contrib.auth.urls")),
+    path('accounts/', include("django.contrib.auth.urls")),
+    path('', RedirectView.as_view(url='/accounts/login/', permanent=False), name='redirect_to_login'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

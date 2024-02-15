@@ -131,23 +131,27 @@
     </style>
   </head>
   <body>
-    <form method="post" enctype="multipart/form-data">
+    <form method="post" enctype="multipart/form-data" id="myForm">
       {% csrf_token %}
 
       <div class="photo_input">
         {{form.photo}}
-        <img class="upload" src="./ad.png" />
+        <img class="upload" src="/static/image/ad.png" />
         <img id="blah" src="#" class="selected_img" />
       </div>
       <div class="note">{{form.notes}}</div>
 
       <button onclick="clear()" class="clear_button" style="font-size: 14x; margin-top: 26px;">CLEAR</button>
-      <a href="/visit/profile" style="text-decoration: none"
-        ><button type="submit" style="font-size: 14px; margin-top: 26px;">SUBMIT</button></a
+      <a href="/visit/dashboard" style="text-decoration: none"
+        ><button type="submit" onclick="directing()" style="font-size: 14px; margin-top: 26px;">SUBMIT</button></a
       >
     </form>
   </body>
   <script>
+    function directing() {
+      console.log("hello")
+        window.location.href = "/visit/dashboard";
+      };
     photo_input = document.querySelector("#photo_input");
     photo_input.addEventListener("change", function () {
       const [file] = photo_input.files;
