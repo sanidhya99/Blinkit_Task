@@ -7,7 +7,7 @@ from django.contrib import messages
 #------------------------------------------------------------------------------------------
 def feed(response):
     show=Post_image.objects.filter(author=response.user.id).order_by('-id')
-    print(show[0].photo)
+    # print(show[0].photo)
     person=response.user
     return render(response,'feed/profile.html',{"feeds":show,"person":person})
 #------------------------------------------------------------------------------------------

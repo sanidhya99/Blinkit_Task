@@ -11,7 +11,7 @@
       body {
         background-color: #121212;
         color: #ffffff;
-        font-family: Arial, sans-serif;
+        font-family: Georgia, 'Times New Roman', Times, serif;
         margin: 0;
         padding: 0;
       }
@@ -23,12 +23,14 @@
 
       /* Header Styles */
       #header {
-        background-color: #333333;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        background-color: #0082a5;
         padding: 10px;
         text-align: center;
       }
 
       #header a {
+        font-family: Georgia, 'Times New Roman', Times, serif;
         margin: 0 10px;
         font-weight: bold;
         text-transform: uppercase;
@@ -36,6 +38,7 @@
 
       /* Heading Styles */
       #heading {
+        font-family: Georgia, 'Times New Roman', Times, serif;
         text-align: center;
         padding: 20px;
       }
@@ -66,6 +69,7 @@
       #about p {
         margin: 0;
         color: #ffffff;
+        font-size: large;
       }
 
       .add {
@@ -94,7 +98,7 @@
       }
 
       .post {
-        background-color: #333333;
+        background-color: #000000;
         padding: 20px;
         margin-bottom: 20px;
         border-radius: 5px;
@@ -108,8 +112,15 @@
       }
 
       .caption {
+        font-family: Georgia, 'Times New Roman', Times, serif;
         margin-top: 10px;
         color: #ffffff;
+        font-size: 24px;
+        font-weight: 600;
+        display:flex;
+        flex-direction: row;
+        
+
       }
 
       #comments {
@@ -123,13 +134,13 @@
   <body>
     <div id="heading"><h1>{{person.name}}</h1></div>
     <div id="header">
-      <a href="/visit/input">input</a>
+      <a href="/visit/input" style="font-size: 26px;">Input</a>
     </div>
     <div id="cont">
       {% for ps in feeds %}
       <div class="post">
         <div class="img">
-          <img src="{{ps.photo.url}}" alt="">
+          <img src="{{ps.photo.url}}" alt="" style="border: solid 1px #686868; display: block; width: 400px; border-radius: 8px; box-shadow: 1px 1px 0px #999, 2px 2px 0px #999, 3px 3px 0px #999;">
         </div>
         <div class="caption"><p>{{ps.notes}}</p></div>
       </div>

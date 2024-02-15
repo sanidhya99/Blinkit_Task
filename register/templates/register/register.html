@@ -1,73 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>register</title>
 
-
     <style>
-        body {
-            background-color: #333;
-            color: #fff;
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            padding: 180px;
+      body {
+        display: block;
+        background-color: #333333;
+        color: #fff;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        margin: 20px;
+        padding: 180px;
+      }
 
-        }
+      form {
+        
+        background-color: #444;
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        border-radius: 6px;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+      }
 
-        form {
-            background-color: #444;
-            max-width: 400px;
-            margin: 0 auto;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-        }
+      form input[type="email"] {
+        width: 95%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #555;
+        border-radius: 3px;
+        background-color: #666;
+        color: #fff;
+      }
 
-        form input[type="text"],
-        form input[type="password"] {
-            width: 95%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #555;
-            border-radius: 3px;
-            background-color: #666;
-            color: #fff;
-        }
+      form input[type="text"],
+      form input[type="password"] {
+        width: 95%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #555;
+        border-radius: 3px;
+        background-color: #666;
+        color: #fff;
+      }
 
-        form button[type="submit"] {
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 3px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
+      form button[type="submit"] {
+        background-color: #007bff;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-size: large;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        font-size: large;
+        border-radius: 3px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
 
-        form button[type="submit"]:hover {
-            background-color: #0056b3;
-        }
+      form button[type="submit"]:hover {
+        background-color: #0056b3;
+      }
 
-        a {
-            text-decoration: none;
-            color: #007bff;
-        }
+      a {
+        text-decoration: none;
+        color: #007bff;
+      }
 
-        a:hover {
-            text-decoration: underline;
-        }
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .container {
+        display: flex;
+      }
+
+      .container img {
+        width: 100%;
+      }
     </style>
-
-
-</head>
-<body>
+  </head>
+  <body>
     <form method="post">
-        {% csrf_token %}
-        {{form.as_p}}
-        <button type="submit">submit</button>
+      {% csrf_token %}
+      <div class="container">
+        <div>{{form.as_p}}</div>
+        <div><img src="./login.png" /></div>
+      </div>
+      <button type="submit">Submit</button>
     </form>
-</body>
+  </body>
 </html>

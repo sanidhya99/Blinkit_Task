@@ -1,58 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Posts</title>
     <style>
-        /* Global Styles */
-body {
-    background-color: #121212;
-    color: #ffffff;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-}
+      /* Global Styles */
+      body {
+        background-color: #121212;
+        color: #ffffff;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        margin: 0;
+        padding: 0;
+      }
 
-a {
-    color: #ffffff;
-    text-decoration: none;
-}
+      .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
 
-/* Form Styles */
-form {
-    padding: 20px;
-    text-align: center;
-}
+      a {
+        color: #ffffff;
+        text-decoration: none;
+      }
 
-form button[type="submit"] {
-    background-color: #333333;
-    color: #ffffff;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    text-transform: uppercase;
-    text-decoration: none;
-}
+      /* Form Styles */
+      form {
+        padding: 20px;
+        text-align: center;
+      }
 
-form button[type="submit"]:hover {
-    background-color: #555555;
-}
+      form input[type="file"] {
+        border: 2px solid #ffffff;
+        background-color: #333333;
+        color: #ffffff;
+        padding: 10px;
+        border-radius: 5px;
+        width : 30%;
+        height : 200px;
+        color : transparent;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        background-image : url("./upload.jpg");
+      }
 
-/* Link Styles */
-a:hover {
-    background-color: #555555;
-}
+       {% comment %} This makes sure that the default choose file button isn't available {% endcomment %}
+        ::file-selector-button {
+            display: none;
+        }
 
+      {% comment %} .photo_input{
+        background : url("./upload.jpg");
+        background-size: cover;
+      } {% endcomment %}
+
+      form input[type="text"]{
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        border: 2px solid #ffffff;
+        background-color: #333333;
+        color: #ffffff;
+        padding: 10px;
+        border-radius: 5px;
+        width : 30%;
+      }
+
+      .note{
+        margin-top: 10px;
+        font-size: 12px;
+      }
+
+
+
+      form button[type="submit"] {
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        background-color: #333333;
+        color: #ffffff;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        margin-top: 10px;
+        border-radius: 5px;
+        text-transform: uppercase;
+        text-decoration: none;
+      }
+
+      form button[type="submit"]:hover {
+
+        background-color: #555555;
+      }
+
+      /* Link Styles */
+      a:hover {
+        background-color: #555555;
+      }
+
+      .selected_img{
+        height: 200px;
+        width: 200px;
+        display: none;
+      }
+
+      .photo_input{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .clear_button{
+        background-color: #333333;
+        color: #ffffff;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        margin-top: 10px;
+        border-radius: 5px;
+        text-transform: uppercase;
+        text-decoration: none;
+        margin-right: 30px;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+      }
+
+      .clear_button:hover {
+        background-color: #555555;
+      }
+
+      #photo_input{
+        display: none;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <a href="/visit/profile" style="text-decoration:none;"><button type="submit"> SUBMIT</button></a>
-    </form>    
-</body>
+      {% csrf_token %}
+
+      <div class="photo_input">
+        {{form.photo}}
+        <img class="upload" src="./upload.jpg" />
+        <img id="blah" src="#" class="selected_img" />
+      </div>
+      <div class="note">{{form.notes}}</div>
+
+      <button onclick="clear()" class="clear_button" style="font-size: 14x; margin-top: 26px;">CLEAR</button>
+      <a href="/visit/profile" style="text-decoration: none"
+        ><button type="submit" style="font-size: 14px; margin-top: 26px;">SUBMIT</button></a
+      >
+    </form>
+  </body>
+  <script>
+    photo_input = document.querySelector("#photo_input");
+    photo_input.addEventListener("change", function () {
+      const [file] = photo_input.files;
+      const blah = document.querySelector("#blah");
+      if (file) {
+        blah.src = URL.createObjectURL(file);
+        document.querySelector("#photo_input").style.display = "none";
+        blah.style.display = "block";
+      }
+    });
+
+    function clear() {
+      document.querySelector(".upload").style.display = "block";
+      document.querySelector("#blah").style.display = "none";
+    }
+
+    document.querySelector(".upload").addEventListener("click", function () {
+      document.querySelector("#photo_input").click();
+    });
+  </script>
 </html>
